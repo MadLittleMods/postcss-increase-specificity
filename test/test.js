@@ -71,6 +71,27 @@ describe('postcss-increase-specificity', function() {
 	it('should not mangle a decl that already has an `!important` on it', function() {
 		return testPlugin('./test/fixtures/no-mangle-important-decl-in-id.css', './test/fixtures/no-mangle-important-decl-in-id.expected.css');
 	});
+
+	it('should repeat `:root` appropriately `options.repeat', function() {
+		return testPlugin(
+			'./test/fixtures/repeat-option.css',
+			'./test/fixtures/repeat-option.expected.css',
+			{
+				repeat: 5
+			}
+		);
+	});
+
+	it('should not add `!important` when `options.overrideIds = false`', function() {
+		return testPlugin(
+			'./test/fixtures/ids-no-override-option.css',
+			'./test/fixtures/ids-no-override-option.expected.css',
+			{
+				overrideIds: false
+			}
+		);
+	});
+
 });
 
 

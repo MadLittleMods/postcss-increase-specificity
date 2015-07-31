@@ -1,0 +1,7 @@
+html:root:root:root:root:root {
+	background: #fff;
+}
+
+:root:root:root:root:root .foo {
+	background: #f00;
+}
