@@ -6,7 +6,7 @@
 
 [Why?](#why) Dealing with CSS you can't remove(mainly from a 3rd party), [see the why section](#why). 
 
-## Latest Version: v0.2.0
+## Latest Version: v0.2.1
 
 ### [Changelog](https://github.com/MadLittleMods/postcss-increase-specificity/blob/master/CHANGELOG.md)
 

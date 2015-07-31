@@ -1,6 +1,8 @@
+// postcss-increase-specificity v0.2.1
+
 var postcss = require('postcss');
-var extend = require('extend');
-var repeat = require('repeat-string');
+var objectAssign = require('object-assign');
+require('string.prototype.repeat');
 
 // Plugin that adds `:root` selectors to the front of the rule thus increasing specificity
 module.exports = postcss.plugin('postcss-increase-specifity', function(options) {
@@ -11,7 +13,7 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 		overrideIds: true
 	};
 
-	var opts = extend({}, defaults, options);
+	var opts = objectAssign({}, defaults, options);
 
 	return function(css) {
 		css.eachRule(function(rule) {
@@ -23,12 +25,12 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 					selector === ':root' ||
 					selector === ':host'
 				) {
-					return selector + repeat(':root', opts.repeat);
+					return selector + ':root'.repeat(opts.repeat);
 				}
 
 				// Otherwise just make it a descendant (this is what will happen most of the time)
 				// `:root:root:root .foo`
-				return repeat(':root', opts.repeat) + ' ' + selector;
+				return ':root'.repeat(opts.repeat) + ' ' + selector;
 			});
 
 			if(opts.overrideIds) {
@@ -39,10 +41,7 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 					(/\[id/).test(rule.selector)
 				) {
 					rule.eachDecl(function(decl) {
-						// Don't mangle already important declarations
-						if(!decl.important) {
-							decl.value += ' !important';
-						}
+						decl.important = true;
 					});
 				}
 			}
