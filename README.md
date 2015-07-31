@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/postcss-increase-specificity.svg)](http://badge.fury.io/js/postcss-increase-specificity) [![Build Status](https://travis-ci.org/MadLittleMods/postcss-increase-specificity.svg)](https://travis-ci.org/MadLittleMods/postcss-increase-specificity)
+
 # PostCSS Increase Specificity
 
 [PostCSS](https://github.com/postcss/postcss) plugin to increase the specificity of your selectors.
@@ -8,6 +10,9 @@
 
 ### [Changelog](https://github.com/MadLittleMods/postcss-increase-specificity/blob/master/CHANGELOG.md)
 
+### Install
+
+`npm install postcss-increase-specificity --save-dev`
 
 # Usage
 

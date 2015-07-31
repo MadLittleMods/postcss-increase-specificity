@@ -1,15 +1,15 @@
 {
   "name": "postcss-increase-specificity",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "PostCSS plugin to increase the specificity of your selectors",
   "keywords": [
     "postcss",
     "css",
     "postcssplugin",
     "specificity"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Eric Eastwood <contact@ericeastwood.com> (http://ericeastwood.com/)",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MadLittleMods/postcss-increase-specificity.git"
