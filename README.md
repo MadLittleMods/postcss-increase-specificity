@@ -1,9 +1,15 @@
-# postcss-increase-specificity
+# PostCSS Increase Specificity
 
-Increases the specificity of your selectors.
+[PostCSS](https://github.com/postcss/postcss) plugin to increase the specificity of your selectors.
 
 [Why?](#why) Dealing with CSS you can't remove(mainly from a 3rd party), [see the why section](#why). 
 
+## Latest Version: v0.1.0
+
+### [Changelog](https://github.com/MadLittleMods/postcss-increase-specificity/blob/master/CHANGELOG.md)
+
+
+# Usage
 
 ```js
 var postcss = require('postcss');
@@ -24,9 +30,13 @@ console.log(output);
 ```
 
 
-# Why?
+# Why? *(my use case)*
 
-**My use case:** I had to use a 3rd party form-creation/data-aggregation service required by the client. The form is embedded in the website, via script tag, which unrolls an iframe with the form. The goal was to make the form match the rest of the site. The 3rd party form creation service *did* have an option for custom CSS, but you had to work around their existing layout and theme styles. Unfortunately, there was no blank(unstyled) theme to start from and you could not add any of your own selectors. Another problem was that they used really specific selectors and also some `!important` declarations. This meant I had to make my own selectors have a lot more specificity in order for my styles to have any effect. I wanted to write relatively clean CSS and still be able to overcome their styles automagically, so I created this plugin, `postcss-increase-specificity`.
+I had to use a 3rd party form-creation/data-aggregation service required by the client. The form is embedded in the website, via script tag, which unrolls an iframe with the form. The goal was to make the form match the rest of the site. 
+
+The 3rd party form creation service *did* have an option for custom CSS, but you had to work around their existing layout and theme styles. Unfortunately, there was no blank(unstyled) theme to start from and you could not add any of your own selectors. Another problem was that they used really specific selectors and also some `!important` declarations.
+
+This meant I had to make my own selectors have a lot more specificity in order for my styles to have any effect. I wanted to write relatively clean CSS and still be able to overcome their styles automagically, so I created this plugin, `postcss-increase-specificity`.
 
 
 # What it does? *(by default)*
