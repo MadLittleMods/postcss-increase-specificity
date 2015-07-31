@@ -122,7 +122,7 @@ This meant I had to make my own selectors have a lot more specificity in order f
 
 We have a suite of Mocha tests.
 
-`npm run test`
+`npm test`
 
 
 
