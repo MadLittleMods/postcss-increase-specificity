@@ -1,0 +1,7 @@
+[id="foo"] {
+	background: #f00;
+}	
+
+[id^="bar"] {
+	background: #0f0;
+}	

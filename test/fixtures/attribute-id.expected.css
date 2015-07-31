@@ -1,0 +1,7 @@
+:root:root:root [id="foo"] {
+	background: #f00 !important;
+}	
+
+:root:root:root [id^="bar"] {
+	background: #0f0 !important;
+}	

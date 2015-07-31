@@ -1,0 +1,32 @@
+{
+  "name": "postcss-increase-specificity",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcssplugin",
+    "specificity"
+  ],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MadLittleMods/postcss-increase-specificity.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "extend": "^3.0.0",
+    "postcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "bluebird": "^2.9.34",
+    "chai": "^3.2.0",
+    "chai-as-promised": "^5.1.0",
+    "clean-css": "^3.3.7",
+    "mocha": "^2.2.5"
+  }
+}

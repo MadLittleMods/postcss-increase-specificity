@@ -1,0 +1,77 @@
+var chai = require('chai');
+var expect = chai.expect;
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
+var postcss = require('postcss');
+var increaseSpecifity = require('../');
+
+var Promise = require('bluebird');
+var fs = Promise.promisifyAll(require('fs'));
+var CleanCSS = require('clean-css');
+
+
+
+function testPlugin(filePath, expectedFilePath, options) {
+	options = options || {};
+
+	return fs.readFileAsync(filePath)
+		.then(function(buffer) {
+			var contents = String(buffer);
+			var actual = postcss([
+					increaseSpecifity(options)
+				])
+				.process(contents);
+
+			return actual.css;
+		})
+		.then(function(actual) {
+			return fs.readFileAsync(expectedFilePath)
+				.then(function(buffer) {
+					var contents = String(buffer);
+
+					var cleanCss = new CleanCSS({
+						advanced: false,
+						aggressiveMerging: false,
+						mediaMerging: false,
+						restructuring: false,
+						shorthandCompacting: false,
+						//keepBreaks: true,
+						compatibility: '-properties.merging'
+					});
+
+					expect(cleanCss.minify(actual).styles).to.equal(cleanCss.minify(contents).styles);
+					//expect(actual).to.equal(contents);
+				});
+		});
+}
+
+
+describe('postcss-increase-specificity', function() {
+	it('should work with classes `.foo`', function() {
+		return testPlugin('./test/fixtures/classes.css', './test/fixtures/classes.expected.css');
+	});
+
+	it('should work with multiple classes `.foo, .bar`', function() {
+		return testPlugin('./test/fixtures/multiple-classes.css', './test/fixtures/multiple-classes.expected.css');
+	});
+
+	it('should work with ids `#foo`', function() {
+		return testPlugin('./test/fixtures/ids.css', './test/fixtures/ids.expected.css');
+	});
+
+	it('should work with attribute selectors with id `[id=foo]`', function() {
+		return testPlugin('./test/fixtures/attribute-id.css', './test/fixtures/attribute-id.expected.css');
+	});
+
+	it('should work with root level selectors `html, :root, :host`', function() {
+		return testPlugin('./test/fixtures/root-level-selectors.css', './test/fixtures/root-level-selectors.expected.css');
+	});
+
+	it('should not mangle a decl that already has an `!important` on it', function() {
+		return testPlugin('./test/fixtures/no-mangle-important-decl-in-id.css', './test/fixtures/no-mangle-important-decl-in-id.expected.css');
+	});
+});
+
+
+

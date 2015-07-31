@@ -1,0 +1,11 @@
+html {
+	background: #f00;
+}
+
+:root {
+	background: #0f0;
+}
+
+:host {
+	background: #0f0;
+}
