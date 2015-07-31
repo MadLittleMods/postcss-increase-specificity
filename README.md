@@ -35,6 +35,65 @@ console.log(output);
 ```
 
 
+## Results
+
+Input:
+
+```css
+html {
+	background: #485674;
+	height: 100%;
+}
+
+.blocks {
+	background: #34405B;
+}
+
+#main-nav {
+	color: #ffffff;
+}
+
+[id="main-nav"] {
+	border: 1px solid #ffffff;
+}
+
+.foo,
+.bar {
+	display: inline-block;
+	width: 50%;
+}
+
+```
+
+Output (result):
+
+```css
+html:root:root:root {
+	background: #485674;
+	height: 100%;
+}
+
+:root:root:root .blocks {
+	background: #34405B;
+}
+
+:root:root:root #main-nav {
+	color: #ffffff !important;
+}
+
+:root:root:root [id="main-nav"] {
+	border: 1px solid #ffffff !important;
+}
+
+:root:root:root .foo,
+:root:root:root .bar {
+	display: inline-block;
+	width: 50%;
+}
+
+```
+
+
 # Why? *(my use case)*
 
 I had to use a 3rd party form-creation/data-aggregation service required by the client. The form is embedded in the website, via script tag, which unrolls an iframe with the form. The goal was to make the form match the rest of the site. 
