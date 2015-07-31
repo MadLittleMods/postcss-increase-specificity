@@ -1,6 +1,6 @@
 {
   "name": "postcss-increase-specificity",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "PostCSS plugin to increase the specificity of your selectors",
   "keywords": [
     "postcss",
@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "extend": "^3.0.0",
-    "postcss": "^4.1.16"
+    "postcss": "^4.1.16",
+    "repeat-string": "^1.5.2"
   },
   "devDependencies": {
     "bluebird": "^2.9.34",

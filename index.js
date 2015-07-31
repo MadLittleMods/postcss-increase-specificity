@@ -1,5 +1,6 @@
 var postcss = require('postcss');
 var extend = require('extend');
+var repeat = require('repeat-string');
 
 // Plugin that adds `:root` selectors to the front of the rule thus increasing specificity
 module.exports = postcss.plugin('postcss-increase-specifity', function(options) {
@@ -22,12 +23,12 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 					selector === ':root' ||
 					selector === ':host'
 				) {
-					return selector + ':root'.repeat(opts.repeat);
+					return selector + repeat(':root', opts.repeat);
 				}
 
 				// Otherwise just make it a descendant (this is what will happen most of the time)
 				// `:root:root:root .foo`
-				return ':root'.repeat(opts.repeat) + ' ' + selector;
+				return repeat(':root', opts.repeat) + ' ' + selector;
 			});
 
 			if(opts.overrideIds) {
