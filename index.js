@@ -1,4 +1,4 @@
-// postcss-increase-specificity v0.2.1
+// postcss-increase-specificity v0.2.2
 
 var postcss = require('postcss');
 var objectAssign = require('object-assign');
@@ -10,7 +10,9 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 		// The number of times `:root` is appended in front of the selector
 		repeat: 3,
 		// Whether to add !important to declarations in rules with id selectors
-		overrideIds: true
+		overrideIds: true,
+		// The thing we repeat over and over to make up the piece that increases specificity
+		stackableRoot: ':root'
 	};
 
 	var opts = objectAssign({}, defaults, options);
@@ -23,14 +25,15 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 				if(
 					selector === 'html' ||
 					selector === ':root' ||
-					selector === ':host'
+					selector === ':host' ||
+					selector === opts.stackableRoot
 				) {
-					return selector + ':root'.repeat(opts.repeat);
+					return selector + opts.stackableRoot.repeat(opts.repeat);
 				}
 
 				// Otherwise just make it a descendant (this is what will happen most of the time)
 				// `:root:root:root .foo`
-				return ':root'.repeat(opts.repeat) + ' ' + selector;
+				return opts.stackableRoot.repeat(opts.repeat) + ' ' + selector;
 			});
 
 			if(opts.overrideIds) {

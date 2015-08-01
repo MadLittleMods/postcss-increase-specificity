@@ -1,0 +1,6 @@
+:root:root:root ::selection {
+	background-color: #fcf1ab; color: #000;
+}
+:root:root:root ::-moz-selection {
+	background-color: #fcf1ab; color: #000;
+}

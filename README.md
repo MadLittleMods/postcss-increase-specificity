@@ -6,7 +6,7 @@
 
 [Why?](#why) Dealing with CSS you can't remove(mainly from a 3rd party), [see the why section](#why). 
 
-## Latest Version: v0.2.1
+## Latest Version: v0.2.2
 
 ### [Changelog](https://github.com/MadLittleMods/postcss-increase-specificity/blob/master/CHANGELOG.md)
 
@@ -15,6 +15,8 @@
 `npm install postcss-increase-specificity --save-dev`
 
 # Usage
+
+## Basic Example
 
 ```js
 var postcss = require('postcss');
@@ -94,6 +96,66 @@ html:root:root:root {
 ```
 
 
+## Only apply to certain sections of styles
+
+[`postcss-increase-specificity`](https://github.com/postcss/postcss-plugin-context) allows you to apply plugins to only in certain areas of of your CSS.
+
+
+```js
+var postcss = require('postcss');
+var context = require('postcss-plugin-context');
+var increaseSpecificity = require('postcss-increase-specificity');
+
+var fs = require('fs');
+
+var mycss = fs.readFileSync('input.css', 'utf8');
+
+// Process your CSS with postcss-increase-specificity
+var output = postcss([
+		context({
+	        increaseSpecificity: increaseSpecificity(/*options*/)
+	    })
+    ])
+    .process(mycss)
+    .css;
+
+console.log(output);
+```
+
+Input:
+
+```css
+/* these styles will be left alone */
+html {
+	background: #485674;
+	height: 100%;
+}
+
+p {
+	display: inline-block;
+	width: 50%;
+}
+
+
+/* these styles will have the hacks prepended */
+@context increaseSpecifity {
+	#main-nav {
+		color: #ffffff;
+	}
+
+	.blocks {
+		background: #34405b;
+	}
+
+	.baz,
+	.qux {
+		display: inline-block;
+		width: 50%;
+	}
+}
+```
+
+
 # Why? *(my use case)*
 
 I had to use a 3rd party form-creation/data-aggregation service required by the client. The form is embedded in the website, via script tag, which unrolls an iframe with the form. The goal was to make the form match the rest of the site. 
@@ -112,10 +174,13 @@ This meant I had to make my own selectors have a lot more specificity in order f
 
 # Options
 
- - `repeat`: number - The number of times we prepend `:root` in front of your selector
+ - `repeat`: number - The number of times we prepend `options.stackableRoot` in front of your selector
  	 - Default: `3`
- - `overrideIds`: boolean - Whether we should add `!important` to all declarations that use id's in any way. Because id's are so specific, the only way(essentially) to overcome another id is to use `!important`.
+ - `overrideIds`: bool - Whether we should add `!important` to all declarations that use id's in any way. Because id's are so specific, the only way(essentially) to overcome another id is to use `!important`.
  	 - Default: `true`
+ - `stackableRoot`: string - Selector that is repeated to make up the piece that is added to increase specificity
+ 	 - Default: `:root`
+ 	 - *Warning:* The default `:root` pseudo-class selector is not supported in IE8-. To support IE-, you can change this option to a class such as `.my-root` and add it to the `<html class="my-root">` tag in your markup.
 
 
 # Tests

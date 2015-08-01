@@ -68,6 +68,10 @@ describe('postcss-increase-specificity', function() {
 		return testPlugin('./test/fixtures/root-level-selectors.css', './test/fixtures/root-level-selectors.expected.css');
 	});
 
+	it('should work with `::selection`', function() {
+		return testPlugin('./test/fixtures/selection-pseudo.css', './test/fixtures/selection-pseudo.expected.css');
+	});
+
 	it('should not mangle a decl that already has an `!important` on it', function() {
 		return testPlugin('./test/fixtures/no-mangle-important-decl-in-id.css', './test/fixtures/no-mangle-important-decl-in-id.expected.css');
 	});
@@ -92,6 +96,25 @@ describe('postcss-increase-specificity', function() {
 		);
 	});
 
+	it('should use stackableRoot `options.stackableRoot`', function() {
+		return testPlugin(
+			'./test/fixtures/stackable-root.css',
+			'./test/fixtures/stackable-root.expected.css',
+			{
+				stackableRoot: '.my-root'
+			}
+		);
+	});
+
+	it('should consider a selector that uses a `options.stackableRoot` a root', function() {
+		return testPlugin(
+			'./test/fixtures/stackable-root.css',
+			'./test/fixtures/stackable-root.expected.css',
+			{
+				stackableRoot: '.my-root'
+			}
+		);
+	});
 });
 
 
