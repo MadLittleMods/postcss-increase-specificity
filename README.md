@@ -98,7 +98,7 @@ html:root:root:root {
 
 ## Only apply to certain sections of styles
 
-[`postcss-increase-specificity`](https://github.com/postcss/postcss-plugin-context) allows you to apply plugins to only in certain areas of of your CSS.
+[`postcss-plugin-context`](https://github.com/postcss/postcss-plugin-context) allows you to apply plugins to only in certain areas of of your CSS.
 
 
 ```js
