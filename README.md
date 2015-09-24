@@ -4,7 +4,7 @@
 
 [PostCSS](https://github.com/postcss/postcss) plugin to increase the specificity of your selectors.
 
-[Why?](#why) Dealing with CSS you can't remove(mainly from a 3rd party), [see the why section](#why). 
+[Why?](#why-my-use-case) Dealing with CSS you can't remove(mainly from a 3rd party), [see the why section](#why-my-use-case). 
 
 ## Latest Version: v0.2.2
 
