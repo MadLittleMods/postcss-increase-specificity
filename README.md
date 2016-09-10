@@ -6,8 +6,6 @@
 
 [Why?](#why-my-use-case) Dealing with CSS you can't remove(mainly from a 3rd party), [see the why section](#why-my-use-case). 
 
-## Latest Version: v0.2.2
-
 ### [Changelog](https://github.com/MadLittleMods/postcss-increase-specificity/blob/master/CHANGELOG.md)
 
 ### Install
@@ -158,7 +156,7 @@ p {
 
 # Why? *(my use case)*
 
-I had to use a 3rd party form-creation/data-aggregation service required by the client. The form is embedded in the website, via script tag, which unrolls an iframe with the form. The goal was to make the form match the rest of the site. 
+I had to use a 3rd party form-creation/data-aggregation service required by the client. The form is embedded in the website, via script tag, which unrolls an iframe with the form. The goal was to make the form match the rest of the site.
 
 The 3rd party form creation service *did* have an option for custom CSS, but you had to work around their existing layout and theme styles. Unfortunately, there was no blank(unstyled) theme to start from and you could not add any of your own selectors. Another problem was that they used really specific selectors and also some `!important` declarations.
 
@@ -188,7 +186,3 @@ This meant I had to make my own selectors have a lot more specificity in order f
 We have a suite of Mocha tests.
 
 `npm test`
-
-
-
-

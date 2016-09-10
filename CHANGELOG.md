@@ -1,3 +1,11 @@
+
+
+# v0.3.0 - 2016-9-9
+
+ - Update to postcss@5.x
+    - Thanks to [@laucheukhim](https://github.com/laucheukhim) for the contribution #5
+
+
 # v0.2.2 - 2015-8-1
 
  - Add `options.stackableRoot` to customize the stackable selector used. Defaults to `:root`
