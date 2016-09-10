@@ -18,7 +18,7 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 	var opts = objectAssign({}, defaults, options);
 
 	return function(css) {
-		css.eachRule(function(rule) {
+		css.walkRules(function(rule) {
 			rule.selectors = rule.selectors.map(function(selector) {
 				// Apply it to the selector itself if the selector is a `root` level component
 				// `html:root:root:root`
