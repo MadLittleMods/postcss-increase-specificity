@@ -1,6 +1,6 @@
 {
   "name": "postcss-increase-specificity",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "PostCSS plugin to increase the specificity of your selectors",
   "keywords": [
     "postcss",
@@ -19,6 +19,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "minimatch": "^3.0.3",
     "object-assign": "^3.0.0",
     "postcss": "^5.1.2",
     "string.prototype.repeat": "^0.2.0"
