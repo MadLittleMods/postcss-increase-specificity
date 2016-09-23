@@ -9,3 +9,7 @@
 .anotherClass ul li a:hover {
 	color: #f00;
 }
+
+.foo {
+	background: #f00;
+}
