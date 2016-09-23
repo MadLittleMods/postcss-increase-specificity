@@ -2,6 +2,7 @@
 
 var postcss = require('postcss');
 var objectAssign = require('object-assign');
+var minimatch = require('minimatch');
 require('string.prototype.repeat');
 
 // Plugin that adds `:root` selectors to the front of the rule thus increasing specificity
@@ -12,7 +13,8 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 		// Whether to add !important to declarations in rules with id selectors
 		overrideIds: true,
 		// The thing we repeat over and over to make up the piece that increases specificity
-		stackableRoot: ':root'
+		stackableRoot: ':root',
+		ignore: []
 	};
 
 	var opts = objectAssign({}, defaults, options);
@@ -20,6 +22,13 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 	return function(css) {
 		css.walkRules(function(rule) {
 			rule.selectors = rule.selectors.map(function(selector) {
+				var shouldBeIgnored = opts.ignore.some(function (pattern) {
+					return minimatch(selector, pattern);
+				});
+
+				if (shouldBeIgnored) {
+					return selector;
+				}
 				// Apply it to the selector itself if the selector is a `root` level component
 				// `html:root:root:root`
 				if(

@@ -1,0 +1,15 @@
+.ignoreClass {
+	background: #f00;
+}
+
+.ignoreClass2 {
+	background: #f00;
+}
+
+.anotherClass ul li a:hover {
+	color: #f00;
+}
+
+:root:root:root .foo {
+	background: #f00;
+}

@@ -115,6 +115,16 @@ describe('postcss-increase-specificity', function() {
 			}
 		);
 	});
+
+	it('should ignore classes that listed in a `options.ignore`', function() {
+		return testPlugin(
+			'./test/fixtures/ignore.css',
+			'./test/fixtures/ignore.expected.css',
+			{
+				ignore: ['.ignoreCl*', '.another*']
+			}
+		);
+	});
 });
 
 

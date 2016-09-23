@@ -172,13 +172,15 @@ This meant I had to make my own selectors have a lot more specificity in order f
 
 # Options
 
- - `repeat`: number - The number of times we prepend `options.stackableRoot` in front of your selector
+ - `repeat`: number -- The number of times we prepend `options.stackableRoot` in front of your selector
  	 - Default: `3`
- - `overrideIds`: bool - Whether we should add `!important` to all declarations that use id's in any way. Because id's are so specific, the only way(essentially) to overcome another id is to use `!important`.
+ - `overrideIds`: bool -- Whether we should add `!important` to all declarations that use id's in any way. Because id's are so specific, the only way(essentially) to overcome another id is to use `!important`.
  	 - Default: `true`
- - `stackableRoot`: string - Selector that is repeated to make up the piece that is added to increase specificity
+ - `stackableRoot`: string -- Selector that is repeated to make up the piece that is added to increase specificity
  	 - Default: `:root`
  	 - *Warning:* The default `:root` pseudo-class selector is not supported in IE8-. To support IE-, you can change this option to a class such as `.my-root` and add it to the `<html class="my-root">` tag in your markup.
+ - `ignore`: `Array|String` -- Selectors that should be excluded from incresing specificity. Accepts any glob expression supported by [minimatch](https://github.com/isaacs/minimatch).
+	 - Default: `[]`
 
 
 # Tests
