@@ -1,7 +1,7 @@
-html:root:root:root:root:root {
+html:not(#\20):not(#\20):not(#\20):not(#\20):not(#\20) {
 	background: #fff;
 }
 
-:root:root:root:root:root .foo {
+:not(#\20):not(#\20):not(#\20):not(#\20):not(#\20) .foo {
 	background: #f00;
 }

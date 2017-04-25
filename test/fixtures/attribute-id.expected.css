@@ -1,7 +1,7 @@
-:root:root:root [id="foo"] {
+:not(#\20):not(#\20):not(#\20) [id="foo"] {
 	background: #f00 !important;
-}	
+}
 
-:root:root:root [id^="bar"] {
+:not(#\20):not(#\20):not(#\20) [id^="bar"] {
 	background: #0f0 !important;
-}	
+}
