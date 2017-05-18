@@ -1,9 +1,12 @@
+# Upcoming release
 
+ - Switch from `:root` to `:not(#\20)` to get more specificity in selectors
+   - Thanks to [@subzey](https://github.com/subzey) for the [idea](https://twitter.com/subzey/status/829050478721896448) and [@iamstarkov](https://github.com/iamstarkov) for the contribution [#9](https://github.com/MadLittleMods/postcss-increase-specificity/pull/9)
 
 # v0.3.0 - 2016-9-9
 
  - Update to postcss@5.x
-    - Thanks to [@laucheukhim](https://github.com/laucheukhim) for the contribution #5
+    - Thanks to [@laucheukhim](https://github.com/laucheukhim) for the contribution [#5](https://github.com/MadLittleMods/postcss-increase-specificity/pull/5)
 
 
 # v0.2.2 - 2015-8-1

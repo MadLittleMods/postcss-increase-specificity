@@ -1,6 +1,6 @@
-:root:root:root ::selection {
+:not(#\20):not(#\20):not(#\20) ::selection {
 	background-color: #fcf1ab; color: #000;
 }
-:root:root:root ::-moz-selection {
+:not(#\20):not(#\20):not(#\20) ::-moz-selection {
 	background-color: #fcf1ab; color: #000;
 }

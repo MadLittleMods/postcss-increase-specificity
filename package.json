@@ -19,6 +19,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
     "object-assign": "^3.0.0",
     "postcss": "^5.1.2",
     "string.prototype.repeat": "^0.2.0"

@@ -64,7 +64,7 @@ describe('postcss-increase-specificity', function() {
 		return testPlugin('./test/fixtures/attribute-id.css', './test/fixtures/attribute-id.expected.css');
 	});
 
-	it('should work with root level selectors `html, :root, :host`', function() {
+	it('should work with root level selectors `html, :not(#\\20), :host`', function() {
 		return testPlugin('./test/fixtures/root-level-selectors.css', './test/fixtures/root-level-selectors.expected.css');
 	});
 
@@ -76,7 +76,7 @@ describe('postcss-increase-specificity', function() {
 		return testPlugin('./test/fixtures/no-mangle-important-decl-in-id.css', './test/fixtures/no-mangle-important-decl-in-id.expected.css');
 	});
 
-	it('should repeat `:root` appropriately `options.repeat', function() {
+	it('should repeat `:not(#\\20)` appropriately `options.repeat', function() {
 		return testPlugin(
 			'./test/fixtures/repeat-option.css',
 			'./test/fixtures/repeat-option.expected.css',
@@ -116,6 +116,3 @@ describe('postcss-increase-specificity', function() {
 		);
 	});
 });
-
-
-
