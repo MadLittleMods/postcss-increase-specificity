@@ -1,7 +1,7 @@
-:not(#\20):not(#\20):not(#\20) [id="foo"] {
+:not(#\9):not(#\9):not(#\9) [id="foo"] {
 	background: #f00 !important;
 }
 
-:not(#\20):not(#\20):not(#\20) [id^="bar"] {
+:not(#\9):not(#\9):not(#\9) [id^="bar"] {
 	background: #0f0 !important;
 }

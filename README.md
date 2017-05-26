@@ -68,25 +68,25 @@ html {
 Output (result):
 
 ```css
-html:not(#\20):not(#\20):not(#\20) {
+html:not(#\9):not(#\9):not(#\9) {
 	background: #485674;
 	height: 100%;
 }
 
-:not(#\20):not(#\20):not(#\20) .blocks {
+:not(#\9):not(#\9):not(#\9) .blocks {
 	background: #34405B;
 }
 
-:not(#\20):not(#\20):not(#\20) #main-nav {
+:not(#\9):not(#\9):not(#\9) #main-nav {
 	color: #ffffff !important;
 }
 
-:not(#\20):not(#\20):not(#\20) [id="main-nav"] {
+:not(#\9):not(#\9):not(#\9) [id="main-nav"] {
 	border: 1px solid #ffffff !important;
 }
 
-:not(#\20):not(#\20):not(#\20) .foo,
-:not(#\20):not(#\20):not(#\20) .bar {
+:not(#\9):not(#\9):not(#\9) .foo,
+:not(#\9):not(#\9):not(#\9) .bar {
 	display: inline-block;
 	width: 50%;
 }
@@ -165,7 +165,7 @@ This meant I had to make my own selectors have a lot more specificity in order f
 
 # What it does? *(by default)*
 
- - Prepend a descendant selector piece: `:not(#\20)` repeated the specified, `options.repeat`, number of times.
+ - Prepend a descendant selector piece: `:not(#\9)` repeated the specified, `options.repeat`, number of times.
  - Add `!important` declarations to any selectors that have to do with an id.
 
 
@@ -177,8 +177,8 @@ This meant I had to make my own selectors have a lot more specificity in order f
  - `overrideIds`: bool - Whether we should add `!important` to all declarations that use id's in any way. Because id's are so specific, the only way(essentially) to overcome another id is to use `!important`.
  	 - Default: `true`
  - `stackableRoot`: string - Selector that is repeated to make up the piece that is added to increase specificity
- 	 - Default: `:not(#\20)`
- 	 - *Warning:* The default `:not(#\20)` pseudo-class selector is not supported in IE8-. To support IE-, you can change this option to a class such as `.my-root` and add it to the `<html class="my-root">` tag in your markup.
+ 	 - Default: `:not(#\9)`
+ 	 - *Warning:* The default `:not(#\9)` pseudo-class selector is not supported in IE8-. To support IE-, you can change this option to a class such as `.my-root` and add it to the `<html class="my-root">` tag in your markup.
 
 
 # Tests

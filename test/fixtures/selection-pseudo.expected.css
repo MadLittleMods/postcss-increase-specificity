@@ -1,6 +1,6 @@
-:not(#\20):not(#\20):not(#\20) ::selection {
+:not(#\9):not(#\9):not(#\9) ::selection {
 	background-color: #fcf1ab; color: #000;
 }
-:not(#\20):not(#\20):not(#\20) ::-moz-selection {
+:not(#\9):not(#\9):not(#\9) ::-moz-selection {
 	background-color: #fcf1ab; color: #000;
 }
