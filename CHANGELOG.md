@@ -1,11 +1,12 @@
-# Upcoming
+# v0.5.0 - 2017-5-26
 
- - Switch from `:not(#\20)` to `:not(#\9)` to save some bytes
+ - Switch `options.stackableRoot` from `:not(#\20)` to `:not(#\9)` to save some bytes
+    - Thanks to [@valtlai](https://github.com/valtlai) for the contribution [#12](https://github.com/MadLittleMods/postcss-increase-specificity/pull/12)
 
 
 # v0.4.0 - 2017-5-18
 
- - Switch from `:root` to `:not(#\20)` to get more specificity in selectors
+ - Switch `options.stackableRoot` from `:root` to `:not(#\20)` to get more specificity in selectors
    - Thanks to [@subzey](https://github.com/subzey) for the [idea](https://twitter.com/subzey/status/829050478721896448) and [@iamstarkov](https://github.com/iamstarkov) for the contribution [#9](https://github.com/MadLittleMods/postcss-increase-specificity/pull/9)
 
 
