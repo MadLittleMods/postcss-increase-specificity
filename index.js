@@ -15,10 +15,6 @@ module.exports = postcss.plugin('postcss-increase-specifity', function(options) 
 		// Whether to add !important to declarations in rules with id selectors
 		overrideIds: true,
 		// The thing we repeat over and over to make up the piece that increases specificity
-		// > Consider use :not(#\9), :not(.\9) and :not(\9)
-		// > Rationale: \9 is a css escape for U+0009 Character Tabulation, and neither classname, nor id, nor tagname can contain a tab character
-		// >
-		// > — https://twitter.com/subzey/status/829050478721896448 (originally \20)
 		stackableRoot: ':not(#' + CSS_ESCAPED_TAB + ')'
 	};
 
