@@ -1,11 +1,11 @@
-html:not(#\20):not(#\20):not(#\20) {
+html:not(#\9):not(#\9):not(#\9) {
 	background: #f00;
 }
 
-:not(#\20):not(#\20):not(#\20):not(#\20) {
+:not(#\9):not(#\9):not(#\9):not(#\9) {
 	background: #0f0;
 }
 
-:host:not(#\20):not(#\20):not(#\20) {
+:host:not(#\9):not(#\9):not(#\9) {
 	background: #0f0;
 }

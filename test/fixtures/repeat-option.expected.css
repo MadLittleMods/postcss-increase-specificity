@@ -1,7 +1,7 @@
-html:not(#\20):not(#\20):not(#\20):not(#\20):not(#\20) {
+html:not(#\9):not(#\9):not(#\9):not(#\9):not(#\9) {
 	background: #fff;
 }
 
-:not(#\20):not(#\20):not(#\20):not(#\20):not(#\20) .foo {
+:not(#\9):not(#\9):not(#\9):not(#\9):not(#\9) .foo {
 	background: #f00;
 }
