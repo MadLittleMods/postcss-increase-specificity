@@ -8,7 +8,7 @@ require('string.prototype.repeat');
 var CSS_ESCAPED_TAB = '\\9';
 
 // Plugin that adds `:not(#\\9)` selectors to the front of the rule thus increasing specificity
-module.exports = postcss.plugin('postcss-increase-specifity', function(options) {
+module.exports = postcss.plugin('postcss-increase-specificity', function(options) {
 	var defaults = {
 		// The number of times `:not(#\\9)` is appended in front of the selector
 		repeat: 3,
