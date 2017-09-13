@@ -23,6 +23,13 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(options
 	return function(css) {
 		css.walkRules(function(rule) {
 			rule.selectors = rule.selectors.map(function(selector) {
+				// Avoid adding additional selectors (stackableRoot) to descendants of @keyframe {}
+				// i.e. `from`, `to`, or `{number}%`
+				var regex = /^from$|^to$|[0-9]*[,]?\s?[0-9]+%/;
+				if (regex.test(selector)) {
+					return selector;
+				}
+
 				// Apply it to the selector itself if the selector is a `root` level component
 				// `html:not(#\\9):not(#\\9):not(#\\9)`
 				if(
