@@ -25,7 +25,7 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(options
 			rule.selectors = rule.selectors.map(function(selector) {
 				// Avoid adding additional selectors (stackableRoot) to descendants of @keyframe {}
 				// i.e. `from`, `to`, or `{number}%`
-				var regex = /^from$|^to$|[0-9]*[,]?\s?[0-9]+%/;
+				var regex = /^from$|^to$|^[0-9]+%/;
 				if (regex.test(selector)) {
 					return selector;
 				}
