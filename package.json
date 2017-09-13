@@ -16,7 +16,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "mocha": "mocha"
   },
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
