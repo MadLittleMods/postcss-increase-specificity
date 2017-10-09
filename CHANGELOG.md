@@ -1,3 +1,9 @@
+# v0.6.0 - 2017-10-9
+
+ - Avoid mangling rules inside `@keyframes`
+    - Thanks to [@IvanKalinin](https://github.com/IvanKalinin) for the contribution [#14](https://github.com/MadLittleMods/postcss-increase-specificity/pull/14)
+
+
 # v0.5.0 - 2017-5-26
 
  - Switch `options.stackableRoot` from `:not(#\20)` to `:not(#\9)` to save some bytes
