@@ -115,4 +115,8 @@ describe('postcss-increase-specificity', function() {
 			}
 		);
 	});
+
+	it('should not change the descendant rules of @keyframes', function() {
+		return testPlugin('./test/fixtures/keyframes.css', './test/fixtures/keyframes.expected.css');
+	});
 });
