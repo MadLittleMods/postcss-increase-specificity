@@ -10,6 +10,17 @@ var CSS_ESCAPED_TAB = '\\9';
 
 function increaseSpecifityOfRule(rule, opts) {
 	rule.selectors = rule.selectors.map(function(selector) {
+		// Ignore a selector if it is in the ignore list
+		if (opts.ignoreList.length > 0) {
+			var isInIgnoreList = opts.ignoreList.some(function(item) {
+				var regEx = new RegExp(item.replace('.', '\\.') + '\\b', 'gi');
+				return selector.search(regEx) > -1;
+			});
+
+			if (isInIgnoreList) {
+				return selector;
+			}
+		}
 		// Apply it to the selector itself if the selector is a `root` level component
 		// `html:not(#\\9):not(#\\9):not(#\\9)`
 		if(
@@ -49,7 +60,9 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(options
 		// Whether to add !important to declarations in rules with id selectors
 		overrideIds: true,
 		// The thing we repeat over and over to make up the piece that increases specificity
-		stackableRoot: ':not(#' + CSS_ESCAPED_TAB + ')'
+		stackableRoot: ':not(#' + CSS_ESCAPED_TAB + ')',
+		// List of ignored selectors
+		ignoreList: [],
 	};
 
 	var opts = objectAssign({}, defaults, options);

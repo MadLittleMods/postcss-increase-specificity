@@ -119,4 +119,16 @@ describe('postcss-increase-specificity', function() {
 	it('should not change the descendant rules of @keyframes', function() {
 		return testPlugin('./test/fixtures/keyframes.css', './test/fixtures/keyframes.expected.css');
 	});
+
+	it('should ignore .selector', function() {
+		return testPlugin(
+			'./test/fixtures/ignore-list.css',
+			'./test/fixtures/ignore-list.expected.css',
+			{
+				repeat: 1,
+				stackableRoot: '.my-root',
+				ignoreList: ['.selector'],
+			}
+		);
+	})
 });

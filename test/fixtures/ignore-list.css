@@ -1,0 +1,36 @@
+.selector {
+  background: red;
+}
+
+.anotherSelector {
+  background: orange;
+}
+
+#id .selector {
+  background: yellow;
+}
+
+p.selector {
+  background: green;
+}
+
+.selectorModifier {
+  background: cyan;
+}
+
+.selector.anotherSelector {
+  background: blue;
+}
+
+.selector .anotherSelector {
+  background: purple;
+}
+
+.anotherSelector.selector {
+  background: black;
+}
+
+.anotherSelector .selector{
+  background: white;
+}
+
