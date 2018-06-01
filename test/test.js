@@ -119,4 +119,8 @@ describe('postcss-increase-specificity', function() {
 	it('should not change the descendant rules of @keyframes', function() {
 		return testPlugin('./test/fixtures/keyframes.css', './test/fixtures/keyframes.expected.css');
 	});
+
+	it('should support disabled blocks of rules', function() {
+		return testPlugin('./test/fixtures/disabled-block.css', './test/fixtures/disabled-block.expected.css');
+	});
 });
