@@ -96,7 +96,23 @@ html:not(#\9):not(#\9):not(#\9) {
 
 ## Only apply to certain sections of styles
 
-[`postcss-plugin-context`](https://github.com/postcss/postcss-plugin-context) allows you to apply plugins to only in certain areas of of your CSS.
+There are two ways handle this. If the majority of your CSS needs to increase specificity, then you can leverage inline comments to disable/enable blocks of rules.
+
+To temporarily disable `postcss-increase-specificity`, use block comments in the following format:
+
+```css
+/* postcss-increase-specificity disable */
+.foo {
+  content: 'cant touch this';
+}
+/* postcss-increase-specificity enable */
+
+.bar {
+  content: 'but i can!';
+}
+```
+
+Otherwise, [`postcss-plugin-context`](https://github.com/postcss/postcss-plugin-context) allows you to apply plugins to only in certain areas of of your CSS using `@context`.
 
 
 ```js
