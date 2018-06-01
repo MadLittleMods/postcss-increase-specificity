@@ -7,6 +7,8 @@ require('string.prototype.repeat');
 
 var CSS_ESCAPED_TAB = '\\9';
 
+var BLOCK_DISABLE = /postcss-increase-specificity disable/;
+var BLOCK_ENABLE = /postcss-increase-specificity enable/;
 
 function increaseSpecifityOfRule(rule, opts) {
 	rule.selectors = rule.selectors.map(function(selector) {
@@ -40,6 +42,24 @@ function increaseSpecifityOfRule(rule, opts) {
 	}
 }
 
+function isDisabled(node, status) {
+	if (!node) return false;
+
+	var prev = node.prev();
+
+	if (prev && prev.type === 'comment') {
+		if (BLOCK_DISABLE.test(prev.text)) {
+			status.disabled = true;
+			return true;
+		} else if (BLOCK_ENABLE.test(prev.text)) {
+			status.disabled = false;
+			return false;
+		}
+	}
+
+	// if no value, use last status.
+	return status.disabled;
+}
 
 // Plugin that adds `:not(#\\9)` selectors to the front of the rule thus increasing specificity
 module.exports = postcss.plugin('postcss-increase-specificity', function(options) {
@@ -55,12 +75,14 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(options
 	var opts = objectAssign({}, defaults, options);
 
 	return function(css) {
+		var status = { disabled: false };
+
 		css.walkRules(function(rule) {
 			// Avoid adding additional selectors (stackableRoot) to descendant rules of @keyframe {}
 			// i.e. `from`, `to`, or `{number}%`
 			var isInsideKeyframes = rule.parent.type === 'atrule' && rule.parent.name === 'keyframes';
 
-			if(!isInsideKeyframes) {
+			if(!isInsideKeyframes && !isDisabled(rule, status)) {
 				increaseSpecifityOfRule(rule, opts);
 			}
 		});
