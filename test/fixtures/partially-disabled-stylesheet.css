@@ -1,0 +1,12 @@
+.foo {
+	background: #f00;
+}
+
+/* postcss-increase-specificity disable */
+.bar {
+  color: #ef0;
+}
+
+.baz {
+  color: #040;
+}
