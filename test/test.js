@@ -131,4 +131,8 @@ describe('postcss-increase-specificity', function() {
 	it('should support multiple disabled blocks of rules', function() {
 		return testPlugin('./test/fixtures/multiple-disabled-blocks.css', './test/fixtures/multiple-disabled-blocks.expected.css');
 	});
+
+	it('should support an entirely disabled stylesheet', function() {
+		return testPlugin('./test/fixtures/disabled-stylesheet.css', './test/fixtures/disabled-stylesheet.expected.css');
+	});
 });

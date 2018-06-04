@@ -1,0 +1,13 @@
+/* postcss-increase-specificity disable */
+.foo {
+	background: #f00;
+}
+
+.bar {
+  color: #ef0;
+}
+
+/* some other random comment that should not enable */
+.baz {
+  color: #040;
+}
