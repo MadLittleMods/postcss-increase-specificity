@@ -1,0 +1,10 @@
+/* postcss-increase-specificity disable */
+/* Some other comment you picked up instead of the one above */
+.foo {
+	background: #f00;
+}
+/* postcss-increase-specificity enable */
+
+:not(#\9):not(#\9):not(#\9) .bar {
+	color: #ef0;
+}

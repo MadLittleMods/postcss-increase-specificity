@@ -123,4 +123,8 @@ describe('postcss-increase-specificity', function() {
 	it('should support disabled blocks of rules', function() {
 		return testPlugin('./test/fixtures/disabled-block.css', './test/fixtures/disabled-block.expected.css');
 	});
+
+	it('should support disabled blocks of rules with comments in between', function() {
+		return testPlugin('./test/fixtures/disabled-block-extra-comments.css', './test/fixtures/disabled-block-extra-comments.expected.css');
+	});
 });
