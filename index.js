@@ -7,8 +7,8 @@ require('string.prototype.repeat');
 
 var CSS_ESCAPED_TAB = '\\9';
 
-var BLOCK_DISABLE = /postcss-increase-specificity disable/;
-var BLOCK_ENABLE = /postcss-increase-specificity enable/;
+var DISABLE_PLUGIN_RE = /postcss-increase-specificity disable/;
+var ENABLE_PLUGIN_RE = /postcss-increase-specificity enable/;
 
 function increaseSpecifityOfRule(rule, opts) {
 	rule.selectors = rule.selectors.map(function(selector) {
