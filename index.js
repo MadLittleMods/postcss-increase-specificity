@@ -42,23 +42,24 @@ function increaseSpecifityOfRule(rule, opts) {
 	}
 }
 
-function isDisabled(node, status) {
-	if (!node) return false;
+/**
+ * Checks for the presence of enable/disable comments up to the previous rule.
+ * @param  {node} node 		PostCSS Node
+ * @return {Null|Boolean} Null if no matching comment; otherwise boolean (toggle status)
+ */
+function checkForEnableDisableComments(node) {
+	if (!node) return null;
 
-	var prev = node.prev();
-
-	if (prev && prev.type === 'comment') {
-		if (BLOCK_DISABLE.test(prev.text)) {
-			status.disabled = true;
+	for (var prev = node; prev = prev.prev(); ) {
+		if (prev.type !== 'comment') return null;
+		if (DISABLE_PLUGIN_RE.test(prev.text)) {
 			return true;
-		} else if (BLOCK_ENABLE.test(prev.text)) {
-			status.disabled = false;
+		} else if (ENABLE_PLUGIN_RE.test(prev.text)) {
 			return false;
 		}
 	}
 
-	// if no value, use last status.
-	return status.disabled;
+	return null;
 }
 
 // Plugin that adds `:not(#\\9)` selectors to the front of the rule thus increasing specificity
@@ -75,14 +76,17 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(options
 	var opts = objectAssign({}, defaults, options);
 
 	return function(css) {
-		var status = { disabled: false };
+		var isPluginDisabled = false;
 
 		css.walkRules(function(rule) {
 			// Avoid adding additional selectors (stackableRoot) to descendant rules of @keyframe {}
 			// i.e. `from`, `to`, or `{number}%`
 			var isInsideKeyframes = rule.parent.type === 'atrule' && rule.parent.name === 'keyframes';
 
-			if(!isInsideKeyframes && !isDisabled(rule, status)) {
+			var enableDisableResult = checkForEnableDisableComments(rule);
+			isPluginDisabled = (enableDisableResult !== null) ? enableDisableResult : isPluginDisabled;
+
+			if(!isInsideKeyframes && !isPluginDisabled) {
 				increaseSpecifityOfRule(rule, opts);
 			}
 		});
