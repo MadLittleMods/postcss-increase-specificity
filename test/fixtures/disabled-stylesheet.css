@@ -4,10 +4,10 @@
 }
 
 .bar {
-  color: #ef0;
+	color: #ef0;
 }
 
 /* some other random comment that should not enable */
 .baz {
-  color: #040;
+	color: #040;
 }
