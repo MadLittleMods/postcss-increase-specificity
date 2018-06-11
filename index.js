@@ -51,7 +51,7 @@ function checkForEnableDisableComments(node) {
 	if (!node) return null;
 
 	for (var prev = node; prev = prev.prev(); ) {
-		if (prev.type !== 'comment') return null;
+		if (prev.type !== 'comment' && prev.type !== 'decl') return null;
 		if (DISABLE_PLUGIN_RE.test(prev.text)) {
 			return true;
 		} else if (ENABLE_PLUGIN_RE.test(prev.text)) {
