@@ -1,0 +1,12 @@
+/* postcss-increase-specificity disable */
+
+my-decl: 'wo';
+
+.foo {
+	background: #f00;
+}
+/* postcss-increase-specificity enable */
+
+.bar {
+	color: #ef0;
+}

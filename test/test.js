@@ -139,4 +139,8 @@ describe('postcss-increase-specificity', function() {
 	it('should support a partially disabled stylesheet', function() {
 		return testPlugin('./test/fixtures/partially-disabled-stylesheet.css', './test/fixtures/partially-disabled-stylesheet.expected.css');
 	});
+
+	it('should support disabled blocks of rules with declarations in between', function() {
+		return testPlugin('./test/fixtures/disabled-block-extra-declaration.css', './test/fixtures/disabled-block-extra-declaration.expected.css');
+	});
 });
