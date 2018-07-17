@@ -64,7 +64,7 @@ describe('postcss-increase-specificity', function() {
 		return testPlugin('./test/fixtures/attribute-id.css', './test/fixtures/attribute-id.expected.css');
 	});
 
-	it('should work with root level selectors `html, :not(#\\9), :host`', function() {
+	it('should work with root level selectors `html, body, :not(#\\9), :host`', function() {
 		return testPlugin('./test/fixtures/root-level-selectors.css', './test/fixtures/root-level-selectors.expected.css');
 	});
 
