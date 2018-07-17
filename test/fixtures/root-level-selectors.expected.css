@@ -2,6 +2,10 @@ html:not(#\9):not(#\9):not(#\9) {
 	background: #f00;
 }
 
+body:not(#\9):not(#\9):not(#\9) {
+	background: #f00;
+}
+
 :not(#\9):not(#\9):not(#\9):not(#\9) {
 	background: #0f0;
 }

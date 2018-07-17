@@ -2,6 +2,10 @@ html {
 	background: #f00;
 }
 
+body {
+	background: #f00;
+}
+
 :not(#\9) {
 	background: #0f0;
 }

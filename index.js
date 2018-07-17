@@ -14,6 +14,7 @@ function increaseSpecifityOfRule(rule, opts) {
 		// `html:not(#\\9):not(#\\9):not(#\\9)`
 		if(
 			selector === 'html' ||
+			selector === 'body' ||
 			selector === ':root' ||
 			selector === ':host' ||
 			selector === opts.stackableRoot
