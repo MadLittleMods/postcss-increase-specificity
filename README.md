@@ -72,7 +72,7 @@ html:#conversation#conversation {
 	color: #ffffff !important;
 }
 
-//No space between the rules
+// No space between the rules
 
 	#conversation#conversation[data-spotim-app="conversation"] {
 		border: 1px solid #ffffff !important;
@@ -93,7 +93,7 @@ html:#conversation#conversation {
 ```
 
 
-# Why?*
+# Why?
 
 After leaving iframe, we're trying to avoid css conflicts between our apps and the publiser css rules.
 
