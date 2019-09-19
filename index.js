@@ -31,17 +31,15 @@ function specifyById(css) {
 
 function increaseSpecifityOfRule(rule, opts) {
   rule.selectors = rule.selectors.map(function(selector) {
-    if (
-      selector === "html" ||
-      selector === ":root" ||
-      selector === ":host" ||
-      selector === opts.id
-    ) {
-      return selector + opts.id.repeat(opts.repeat);
+    opts.id = opts.id[0] !== "#" ? "#" + opts.id : opts.id;
+    if (selector === "html" || selector === "body") {
+      return selector;
     }
     if (
-      selector.startsWith("[data-spot-im-direction]") ||
-      selector.startsWith("[data-spotim-app")
+      selector === opts.id ||
+      ((opts.id === "#conversation" &&
+        selector.startsWith("[data-spot-im-direction]")) ||
+        selector.startsWith("[data-spotim-app"))
     ) {
       return opts.id.repeat(opts.repeat) + selector;
     }
