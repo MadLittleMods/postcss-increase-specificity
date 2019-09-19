@@ -35,18 +35,18 @@ function increaseSpecifityOfRule(rule, opts) {
       selector === "html" ||
       selector === ":root" ||
       selector === ":host" ||
-      selector === opts.Id
+      selector === opts.id
     ) {
-      return selector + opts.Id.repeat(opts.repeat);
+      return selector + opts.id.repeat(opts.repeat);
     }
     if (
       selector.startsWith("[data-spot-im-direction]") ||
       selector.startsWith("[data-spotim-app")
     ) {
-      return opts.Id.repeat(opts.repeat) + selector;
+      return opts.id.repeat(opts.repeat) + selector;
     }
 
-    return opts.Id.repeat(opts.repeat) + " " + selector;
+    return opts.id.repeat(opts.repeat) + " " + selector;
   });
 }
 
@@ -59,7 +59,7 @@ module.exports = postcss.plugin("postcss-increase-specificity", function(
 
   opts = objectAssign({}, defaults, options);
 
-  let specifyBy = opts.specifyById ? specifyById : specifyByClassRepeat;
+  let specifyBy = opts.id ? specifyById : specifyByClassRepeat;
 
   return specifyBy;
 });
