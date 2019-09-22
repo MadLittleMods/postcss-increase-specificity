@@ -19,7 +19,7 @@ Webpack usage:
       options: {
         plugins: function() {
           return [
-            increaseCssSpecificity({specifyById: true , Id: "#conversation" }),
+            increaseCssSpecificity({id: "#conversation" }),
           ];
         },
       },
@@ -31,7 +31,7 @@ Webpack usage:
 Input:
 
 ```css
-html {
+body {
 	background: #485674;
 	height: 100%;
 }
@@ -59,7 +59,7 @@ html {
 Output (result):
 
 ```css
-html:#conversation#conversation {
+body {
 	background: #485674;
 	height: 100%;
 }
@@ -69,17 +69,17 @@ html:#conversation#conversation {
 }
 
 #conversation#conversation #main-nav {
-	color: #ffffff !important;
+	color: #ffffff;
 }
 
 // No space between the rules
 
 	#conversation#conversation[data-spotim-app="conversation"] {
-		border: 1px solid #ffffff !important;
+		border: 1px solid #ffffff;
 	}
 
 	#conversation#conversation[data-spot-im-direction="rtl"] {
-		border: 1px solid #ffffff !important;
+		border: 1px solid #ffffff;
 	}
 
 //
@@ -105,11 +105,7 @@ After leaving iframe, we're trying to avoid css conflicts between our apps and t
 
 # Options
 
- - `repeat`: number - The number of times Id is being added before each rule /  classes being repeated.
+ - `repeat`: number - The number of times id is being added before each rule /  classes being repeated.
  	 - Default: `2`
- - `specifyById`: boolean - *true*: increase specificity by *Id*.
- 			    *false*: increase specificity by repeat classes.
- 	 - Default: `false`
-	 
- - `Id`: string - prepends to each rule to increase specificity if *specifyById* is true
+ - `id`: string - if id is provided, the id is being added to each rule to increase specificity
 
