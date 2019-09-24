@@ -38,7 +38,7 @@ function increaseSpecifityOfRule(rule, opts) {
     if (
       selector === opts.id ||
       ((opts.id === "#conversation" &&
-        selector.startsWith("[data-spot-im-direction]")) ||
+        selector.startsWith("[data-spot-im-direction")) ||
         selector.startsWith("[data-spotim-app"))
     ) {
       return opts.id.repeat(opts.repeat) + selector;
