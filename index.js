@@ -19,6 +19,7 @@ function specifyByClassRepeat(root) {
 }
 
 function specifyById(css) {
+  opts.id = opts.id[0] !== '#' ? '#' + opts.id : opts.id;
   css.walkRules(function(rule) {
     var isInsideKeyframes =
       rule.parent.type === 'atrule' && rule.parent.name === 'keyframes';
@@ -31,24 +32,25 @@ function specifyById(css) {
 
 function increaseSpecifityOfRule(rule, opts) {
   rule.selectors = rule.selectors.map(function(selector) {
-    opts.id = opts.id[0] !== '#' ? '#' + opts.id : opts.id;
     if (
-      /^\s*\:global/.test(selector) ||
+      selector.includes(':root') || 
       selector === 'html' ||
       selector === 'body'
     ) {
       return selector;
-    } else if (
+     } else if (
       selector === opts.id ||
-      ((opts.id === '#conversation' &&
+      ((opts.id === '#spcv_conversation' &&
         selector.startsWith('[data-spot-im-direction')) ||
         selector.startsWith('[data-spotim-app'))
     ) {
-      return opts.id.repeat(opts.repeat) + selector;
-    } else if (opts.withCssLoader)
+      return `:global(${opts.id.repeat(opts.repeat)})` + selector
+    }
+      else if (opts.withCssLoader){
       return (
-        ':global ' + opts.id.repeat(opts.repeat) + ' :local ' + selector
+        `:global(${opts.id.repeat(opts.repeat)}) ` + selector
       );
+    }
     else return opts.id.repeat(opts.repeat) + ' ' + selector;
   });
 }
