@@ -46,7 +46,7 @@ function increaseSpecifityOfRule(rule, opts) {
     ) {
       return `:global(${opts.id.repeat(opts.repeat)})` + selector
     }
-      else if (opts.withCssLoader){
+      else if (opts.withoutCssLoaderPrefix){
       return (
         `:global(${opts.id.repeat(opts.repeat)}) ` + selector
       );
