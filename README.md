@@ -44,9 +44,6 @@ body {
 	color: #ffffff;
 }
 
-[id="main-nav"] {
-	border: 1px solid #ffffff;
-}
 
 .foo,
 .bar {
@@ -72,17 +69,6 @@ body {
 	color: #ffffff;
 }
 
-// No space between the rules
-
-	#conversation#conversation[data-spotim-app="conversation"] {
-		border: 1px solid #ffffff;
-	}
-
-	#conversation#conversation[data-spot-im-direction="rtl"] {
-		border: 1px solid #ffffff;
-	}
-
-//
 
 #conversation#conversation .foo,
 #conversation#conversation .bar {
