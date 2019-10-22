@@ -108,4 +108,6 @@ After leaving iframe, we're trying to avoid css conflicts between our apps and t
  - `repeat`: number - The number of times id is being added before each rule /  classes being repeated.
  	 - Default: `2`
  - `id`: string - if id is provided, the id is being added to each rule to increase specificity
+ - `withoutCssLoaderPrefix`: boolean - add your css-loader prefix to your id.
+ 	- Default: false
 
