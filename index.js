@@ -40,10 +40,13 @@ function increaseSpecifityOfRule(rule, opts) {
       return selector;
      } else if (
       selector === opts.id ||
-      ((opts.id === '#spcv_conversation' &&
-        selector.startsWith('[data-spot-im-direction')) ||
-        selector.startsWith('[data-spotim-app'))
+      ((opts.id === '#spcv_conversation' || opts.id === '#conversation') &&
+        (selector.startsWith('[data-spot-im-direction') ||
+        selector.startsWith('[data-spotim-app')))
     ) {
+      if(opts.id === '#conversation') {
+        return opts.id.repeat(opts.repeat)  + selector;
+      }
       return `:global(${opts.id.repeat(opts.repeat)})` + selector
     }
       else if (opts.withoutCssLoaderPrefix){
