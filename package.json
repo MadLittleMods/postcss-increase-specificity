@@ -1,6 +1,6 @@
 {
   "name": "@spotim/postcss-increase-specificity",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "PostCSS plugin to increase the specificity of your selectors",
   "keywords": [
     "postcss",
