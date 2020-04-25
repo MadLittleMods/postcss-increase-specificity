@@ -1,0 +1,13 @@
+:not(#\9):not(#\9):not(#\9) .foo {
+	background: #f00;
+}
+
+/* no important-start */
+.boo {
+	background: green;
+}
+/* no important-end */
+
+:not(#\9):not(#\9):not(#\9) .coo {
+	background:goldenrod;
+}

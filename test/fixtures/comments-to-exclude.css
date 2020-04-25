@@ -1,0 +1,13 @@
+.foo {
+	background: #f00;
+}
+
+/* no important-start */
+.boo {
+	background: green;
+}
+
+/* no important-end */
+.coo {
+	background:goldenrod;
+}

@@ -55,14 +55,35 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(options
 	var opts = objectAssign({}, defaults, options);
 
 	return function(css) {
-		css.walkRules(function(rule) {
-			// Avoid adding additional selectors (stackableRoot) to descendant rules of @keyframe {}
-			// i.e. `from`, `to`, or `{number}%`
-			var isInsideKeyframes = rule.parent.type === 'atrule' && rule.parent.name === 'keyframes';
+		let isExcluded = false;
+		css.walk(function(node) {
 
-			if(!isInsideKeyframes) {
-				increaseSpecifityOfRule(rule, opts);
+			if (node.type === 'comment') {
+
+				const commentStart = 'no important-start';
+				const commentEnd = 'no important-end';
+
+				if(node.text === commentStart) {
+					isExcluded = true;
+				}
+
+				if(node.text === commentEnd) {
+					isExcluded = false;
+				}
+				console.log(node);
+				console.log('\n');
 			}
-		});
+
+			if (node.type === 'rule' && !isExcluded) {
+				const rule = node;
+				// Avoid adding additional selectors (stackableRoot) to descendant rules of @keyframe {}
+				// i.e. `from`, `to`, or `{number}%`
+				var isInsideKeyframes = rule.parent.type === 'atrule' && rule.parent.name === 'keyframes';
+
+				if (!isInsideKeyframes) {
+					increaseSpecifityOfRule(rule, opts);
+				}
+			}
+		})
 	};
 });
