@@ -70,8 +70,6 @@ module.exports = postcss.plugin('postcss-increase-specificity', function(options
 				if(node.text === commentEnd) {
 					isExcluded = false;
 				}
-				console.log(node);
-				console.log('\n');
 			}
 
 			if (node.type === 'rule' && !isExcluded) {
