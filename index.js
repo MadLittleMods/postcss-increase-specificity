@@ -8,9 +8,9 @@ require("string.prototype.repeat");
 let opts;
 
 function specifyByClassRepeat(root) {
-  root.walkRules(function(node) {
+  root.walkRules(function (node) {
     if (isPresent(node.selectors)) {
-      node.selectors = node.selectors.map(function(selector) {
+      node.selectors = node.selectors.map(function (selector) {
         return hasClass(selector) ? classRepeat(selector, opts) : selector;
       });
     }
@@ -20,9 +20,12 @@ function specifyByClassRepeat(root) {
 
 function specifyById(css) {
   opts.id = opts.id[0] !== "#" ? "#" + opts.id : opts.id;
-  css.walkRules(function(rule) {
+  css.walkRules(function (rule) {
     var isInsideKeyframes =
-      rule.parent.type === "atrule" && rule.parent.name === "keyframes";
+      rule.parent.type === "atrule" &&
+      (rule.parent.name === "keyframes" ||
+        rule.parent.name === "-webkit-keyframes" ||
+        rule.parent.name === "webkit-keyframes");
 
     if (!isInsideKeyframes) {
       increaseSpecifityOfRule(rule, opts);
@@ -31,7 +34,7 @@ function specifyById(css) {
 }
 
 function increaseSpecifityOfRule(rule, opts) {
-  rule.selectors = rule.selectors.map(function(selector) {
+  rule.selectors = rule.selectors.map(function (selector) {
     if (
       selector.includes(":root") ||
       selector === "html" ||
@@ -47,11 +50,11 @@ function increaseSpecifityOfRule(rule, opts) {
   });
 }
 
-module.exports = postcss.plugin("postcss-increase-specificity", function(
+module.exports = postcss.plugin("postcss-increase-specificity", function (
   options
 ) {
   const defaults = {
-    repeat: 2
+    repeat: 2,
   };
 
   opts = objectAssign({}, defaults, options);
