@@ -20,6 +20,11 @@ function increaseSpecifityOfRule(rule, opts) {
 		) {
 			return selector + opts.stackableRoot.repeat(opts.repeat);
 		}
+		
+		// Avoid this selectors when we are exporting or using Sass modules
+		if(/^\:(:export|:local|:global|)/.test(selector)){
+			return selector;
+		}
 
 		// Otherwise just make it a descendant (this is what will happen most of the time)
 		// `:not(#\\9):not(#\\9):not(#\\9) .foo`
