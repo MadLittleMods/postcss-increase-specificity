@@ -25,7 +25,9 @@ function specifyById(css) {
       rule.parent.type === "atrule" &&
       (rule.parent.name === "keyframes" ||
         rule.parent.name === "-webkit-keyframes" ||
-        rule.parent.name === "webkit-keyframes");
+        rule.parent.name === "webkit-keyframes" ||
+        rule.parent.name === "-moz-keyframes" ||
+        rule.parent.name === "-o-keyframes");
 
     if (!isInsideKeyframes) {
       increaseSpecifityOfRule(rule, opts);
