@@ -1,0 +1,15 @@
+:not(#\9):not(#\9):not(#\9) [id="foo"] {
+    background: #f00 !important;
+}
+
+:not(#\9):not(#\9):not(#\9) [id^="bar"] {
+    background: #0f0 !important;
+}
+
+:not(#\9):not(#\9):not(#\9) .foo {
+    background: #f00;
+}
+
+:export {
+    listColor: red;
+}
