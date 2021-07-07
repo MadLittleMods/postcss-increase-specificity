@@ -119,4 +119,8 @@ describe('postcss-increase-specificity', function() {
 	it('should not change the descendant rules of @keyframes', function() {
 		return testPlugin('./test/fixtures/keyframes.css', './test/fixtures/keyframes.expected.css');
 	});
+
+	it('should ignore :export option used in scss files', function() {
+		return testPlugin('./test/fixtures/scss/export-option.scss', './test/fixtures/scss/export-option.expected.scss');
+	});
 });

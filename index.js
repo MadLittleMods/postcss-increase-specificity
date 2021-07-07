@@ -20,6 +20,12 @@ function increaseSpecifityOfRule(rule, opts) {
 		) {
 			return selector + opts.stackableRoot.repeat(opts.repeat);
 		}
+		
+		// Avoid prefix for :exports since :export block defines the symbols 
+		// that are going to be exported to the consumer
+		if (selector.indexOf(":export") !== -1) {
+		    return selector;
+		}
 
 		// Otherwise just make it a descendant (this is what will happen most of the time)
 		// `:not(#\\9):not(#\\9):not(#\\9) .foo`
