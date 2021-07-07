@@ -52,6 +52,10 @@ describe('postcss-increase-specificity', function() {
 		return testPlugin('./test/fixtures/classes.css', './test/fixtures/classes.expected.css');
 	});
 
+	it('should handle exclusion commments', function () {
+		return testPlugin('./test/fixtures/comments-to-exclude.css', './test/fixtures/comments-to-exclude.expected.css');
+	});
+
 	it('should work with multiple classes `.foo, .bar`', function() {
 		return testPlugin('./test/fixtures/multiple-classes.css', './test/fixtures/multiple-classes.expected.css');
 	});
