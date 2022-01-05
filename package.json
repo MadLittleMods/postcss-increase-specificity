@@ -1,6 +1,6 @@
 {
-  "name": "postcss-increase-specificity",
-  "version": "0.6.0",
+  "name": "@spotim/postcss-increase-specificity",
+  "version": "3.0.1",
   "description": "PostCSS plugin to increase the specificity of your selectors",
   "keywords": [
     "postcss",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MadLittleMods/postcss-increase-specificity.git"
+    "url": "https://github.com/SpotIM/postcss-increase-specificity.git"
   },
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,10 @@
     "mocha": "mocha"
   },
   "dependencies": {
+    "class-repeat": "^1.0.2",
     "escape-string-regexp": "^1.0.5",
+    "has-class-selector": "^3.3.1",
+    "is-present": "^1.0.0",
     "object-assign": "^3.0.0",
     "postcss": "^5.1.2",
     "string.prototype.repeat": "^0.2.0"
