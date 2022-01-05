@@ -19,7 +19,6 @@ function specifyByClassRepeat(root) {
 }
 
 function specifyById(css) {
-  // opts.id = opts.id[0] !== "#" ? "#" + opts.id : opts.id;
   css.walkRules(function (rule) {
     var isInsideKeyframes =
       rule.parent.type === "atrule" &&
