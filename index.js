@@ -19,7 +19,7 @@ function specifyByClassRepeat(root) {
 }
 
 function specifyById(css) {
-  opts.id = opts.id[0] !== "#" ? "#" + opts.id : opts.id;
+  // opts.id = opts.id[0] !== "#" ? "#" + opts.id : opts.id;
   css.walkRules(function (rule) {
     var isInsideKeyframes =
       rule.parent.type === "atrule" &&
@@ -52,16 +52,17 @@ function increaseSpecifityOfRule(rule, opts) {
   });
 }
 
-module.exports = postcss.plugin("postcss-increase-specificity", function (
-  options
-) {
-  const defaults = {
-    repeat: 2,
-  };
+module.exports = postcss.plugin(
+  "postcss-increase-specificity",
+  function (options) {
+    const defaults = {
+      repeat: 2,
+    };
 
-  opts = objectAssign({}, defaults, options);
+    opts = objectAssign({}, defaults, options);
 
-  let specifyBy = opts.id ? specifyById : specifyByClassRepeat;
+    let specifyBy = opts.id ? specifyById : specifyByClassRepeat;
 
-  return specifyBy;
-});
+    return specifyBy;
+  }
+);
